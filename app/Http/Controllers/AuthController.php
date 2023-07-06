@@ -57,7 +57,7 @@ class AuthController extends Controller
         
         $foto = $request->file('foto');
         $destinationPath = 'images/';
-        $profileImage = Str::slug($request->nama_profesi) . "." . $foto->getClientOriginalExtension();
+        $profileImage = Str::slug($request->username) . "." . $foto->getClientOriginalExtension();
         $foto->move($destinationPath, $profileImage);
 
         $user->foto = $profileImage;
