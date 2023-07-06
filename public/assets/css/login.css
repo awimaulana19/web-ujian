@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+*{
+    font-family:Poppins;
+}
+
+body{
+    background-image: url("../img/uin.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#login .card{
+    background-color:rgb(255, 255, 255);
+    margin-bottom: 100px;
+}
