@@ -13,3 +13,14 @@ body{
     background-color:rgb(255, 255, 255);
     margin-bottom: 100px;
 }
+
+@media (max-width: 700px){
+    #login #logo{
+        margin-top: 30px;
+    }
+
+    #login .card{
+        margin-top: 40px;
+        margin-bottom: 110px;
+    }
+}

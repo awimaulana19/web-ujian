@@ -19,7 +19,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center mt-4">
-                    <div class="col-3 mx-auto bg-white mb-4">
+                    <div class="col-md-3 mx-auto bg-white mb-4" id="logo">
                         <img src="{{ asset('assets/img/logo.png') }}" alt="" width="150px">
                         <p class="fs-4 fw-bold mt-2"><span>WEB UJIAN</span> SISTEM INFORMASI</p>
                     </div>
