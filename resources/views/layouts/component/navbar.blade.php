@@ -20,7 +20,7 @@
                     <i class="far fa-user"></i> {{ auth()->user()->nama }}
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="{{ url('/logout') }}" class="dropdown-item has-icon text-danger">
+                <a href="@if (auth()->user()->roles == 'admin') /logout @else /logout-mahasiswa @endif" class="dropdown-item has-icon text-danger">
                     <i class="fas fa-sign-out-alt"></i> Logout
                 </a>
             </div>

@@ -39,6 +39,7 @@ Route::group(['middleware' => ['auth', 'OnlyAdmin']], function () {
 });
 
 Route::group(['middleware' => ['auth', 'OnlyMahasiswa']], function () {
+    Route::get('/logout-mahasiswa', [AuthController::class, 'logout']);
     Route::get('/home', [AuthController::class, 'dashboard_mahasiswa']);
     Route::get('/home/user/{id}', [AuthController::class, 'edit_data']);
     Route::post('/home/user/{id}', [AuthController::class, 'update_data']);
