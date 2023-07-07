@@ -3,10 +3,9 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\Models\Nilai;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class NilaiPolicy
+class MahasiswaPolicy
 {
     use HandlesAuthorization;
 
@@ -20,8 +19,8 @@ class NilaiPolicy
         //
     }
 
-    public function view(User $user, Nilai $nilai)
+    public function view(User $user, User $mahasiswa)
     {
-        return $user->id == $nilai->user_id;
+        return $user->id == $mahasiswa->id;
     }
 }

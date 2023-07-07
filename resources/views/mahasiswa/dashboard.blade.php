@@ -7,7 +7,13 @@
         <div class="col-md-12">
             <div class="card p-5">
                 <div class="row">
-                    <h3 class="mb-4">Profile</h3>
+                    @if (session('pesan-berhasil'))
+                        <p class="alert alert-success">{{ session('pesan-berhasil') }}</p>
+                    @endif
+                    <div class="d-flex justify-content-between mb-4">
+                        <h3>Profile</h3>
+                        <a href="/home/user/{{ auth()->user()->id }}" class="btn btn-primary">Update Profile</a>
+                    </div>
                     <div class="row pb-3">
                         <div class="col-lg-7 col-md-12 align-self-center">
                             <div class="mb-3">

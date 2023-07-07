@@ -19,8 +19,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center mt-4">
-                    <img src="{{ asset('assets/img/logo.png') }}" alt="" width="150px">
-                    <p class="fs-4 fw-bold my-4"><span>WEB UJIAN</span> SISTEM INFORMASI</p>
+                    <div class="col-md-3 mx-auto bg-white mb-4">
+                        <img src="{{ asset('assets/img/logo.png') }}" alt="" width="150px">
+                        <p class="fs-4 fw-bold mt-2"><span>WEB UJIAN</span> SISTEM INFORMASI</p>
+                    </div>
                 </div>
                 <div class="col-md-6 mx-auto">
                     <div class="card p-4 border-0">
@@ -57,7 +59,7 @@
     </section>
 
     <script>
-        function lihat() { 
+        function lihat() {
             var x = document.getElementById('pass').type;
 
             if (x == 'password') {

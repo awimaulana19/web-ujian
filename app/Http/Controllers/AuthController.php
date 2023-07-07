@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\UpdateDataRequest;
 
 class AuthController extends Controller
 {
@@ -54,7 +55,7 @@ class AuthController extends Controller
         $user->username = $request->username;
         $user->password = Hash::make($request->password);
         $user->jk = $request->jk;
-        
+
         $foto = $request->file('foto');
         $destinationPath = 'images/';
         $profileImage = Str::slug($request->username) . "." . $foto->getClientOriginalExtension();
@@ -99,8 +100,43 @@ class AuthController extends Controller
 
     public function dashboard_mahasiswa()
     {
-        $user = Auth::user();
-        return view('mahasiswa.dashboard', compact('user'));
+        return view('mahasiswa.dashboard');
+    }
+
+    public function edit_data($id)
+    {
+        $user = User::where('id', $id)->first();
+
+        $this->authorize('view', $user);
+
+        return view('mahasiswa.edit', compact('user'));
+    }
+
+    public function update_data(UpdateDataRequest $request, $id)
+    {
+        $user = User::where('id', $id)->first();
+
+        $this->authorize('view', $user);
+
+        $user->nama = $request->nama;
+        $user->username = $request->username;
+        $user->jk = $request->jk;
+
+        if ($request->foto) {
+            $file_path = public_path() . '/images/' . $user->foto;
+            unlink($file_path);
+
+            $foto = $request->file('foto');
+            $destinationPath = 'images/';
+            $profileImage = Str::slug($request->username) . "." . $foto->getClientOriginalExtension();
+            $foto->move($destinationPath, $profileImage);
+
+            $user->foto = $profileImage;
+        }
+
+        $user->update();
+
+        return redirect('/home')->with('pesan-berhasil', 'Data Berhasil Di Update');
     }
 
     public function ujian_mahasiswa()

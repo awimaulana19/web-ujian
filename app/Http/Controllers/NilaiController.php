@@ -12,7 +12,6 @@ class NilaiController extends Controller
     public function jawab_mahasiswa(Request $request, $id)
     {
         $nilai = Nilai::where('user_id', $id)->get();
-        // $this->authorize('view', $nilai);
         if ($nilai->isEmpty()) {
             $user = User::where('id', $id)->first();
             $soal = Soal::get();

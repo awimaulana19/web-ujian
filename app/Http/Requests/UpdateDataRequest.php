@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RegisterRequest extends FormRequest
+class UpdateDataRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,12 +23,13 @@ class RegisterRequest extends FormRequest
      */
     public function rules()
     {
+        $mahasiswaId = $this->route('id');
+        
         return [
             'nama' => 'required|string|max:255',
-            'username' => 'required|string|max:50|unique:users',
-            'password' => 'required|string|max:50',
+            'username' => 'required|string|max:50|unique:users,username,'.$mahasiswaId,
             'jk' => 'required|string|max:50',
-            'foto' => 'required|mimes:png,jpg,jpeg|max:10240',
+            'foto' => 'mimes:png,jpg,jpeg|max:10240',
         ];
     }
 
@@ -42,13 +43,9 @@ class RegisterRequest extends FormRequest
             'username.string' => 'Username harus bertipe string',
             'username.max' => 'Username maximal 50 karakter',
             'username.unique' => 'NIM Sudah Ada',
-            'password.required' => 'Password tidak boleh kosong',
-            'password.string' => 'Password harus bertipe string',
-            'password.max' => 'Password maximal 50 karakter',
             'jk.required' => 'Jenis kelamin tidak boleh kosong',
             'jk.string' => 'Jenis kelamin harus bertipe string',
             'jk.max' => 'Jenis kelamin maximal 50 karakter',
-            'foto.required' => 'Foto tidak boleh kosong',
             'foto.mimes' => 'Foto harus berformat png, jpg atau jpeg',
             'foto.max' => 'Foto maximal 10 MB',
         ];

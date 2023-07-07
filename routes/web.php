@@ -40,6 +40,8 @@ Route::group(['middleware' => ['auth', 'OnlyAdmin']], function () {
 
 Route::group(['middleware' => ['auth', 'OnlyMahasiswa']], function () {
     Route::get('/home', [AuthController::class, 'dashboard_mahasiswa']);
+    Route::get('/home/user/{id}', [AuthController::class, 'edit_data']);
+    Route::post('/home/user/{id}', [AuthController::class, 'update_data']);
     Route::get('/ujian', [AuthController::class, 'ujian_mahasiswa']);
     Route::get('/ujian/soal', [AuthController::class, 'soal_mahasiswa'])->middleware('StartUjian');
     Route::post('/ujian/soal/{id}', [NilaiController::class, 'jawab_mahasiswa'])->middleware('StartUjian');
