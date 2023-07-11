@@ -28,7 +28,7 @@ class RegisterRequest extends FormRequest
             'username' => 'required|string|max:50|unique:users',
             'password' => 'required|string|max:50',
             'jk' => 'required|string|max:50',
-            'foto' => 'required|mimes:png,jpg,jpeg|max:10240',
+            'foto' => 'required|mimes:png,jpg,jpeg|max:2048',
         ];
     }
 
@@ -50,7 +50,7 @@ class RegisterRequest extends FormRequest
             'jk.max' => 'Jenis kelamin maximal 50 karakter',
             'foto.required' => 'Foto tidak boleh kosong',
             'foto.mimes' => 'Foto harus berformat png, jpg atau jpeg',
-            'foto.max' => 'Foto maximal 10 MB',
+            'foto.max' => 'Foto maximal 2 MB',
         ];
     }
 }

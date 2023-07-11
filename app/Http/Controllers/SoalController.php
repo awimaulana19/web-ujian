@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Soal;
 use App\Models\User;
+use App\Models\Nilai;
 use App\Models\Jawaban;
 use Illuminate\Http\Request;
 
@@ -82,6 +83,10 @@ class SoalController extends Controller
 
         $admin->admin_start = false;
         $admin->update();
+
+        $nilai = Nilai::get();
+
+        Nilai::destroy($nilai);
 
         return redirect('/soal');
     }
